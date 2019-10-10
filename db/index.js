@@ -63,11 +63,11 @@ function createDataBase() {
       if (!layer) {
         return false;
       }
-      db[id] = {
-        name: layer.name,
-        childLayers: layer.childLayers,
-        objects: layer.objects
-      };
+      db[id] = Object.assign({
+        name: db[id].name,
+        childLayers: layer.childLayers || db[id].childLayers,
+        objects: layer.objects || db[id].objects
+      });
       return id;
     }
   };

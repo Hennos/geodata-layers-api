@@ -8,6 +8,12 @@ var layersRouter = require("./routes/layers");
 
 var app = express();
 
+var db = require("./db")();
+app.use(function(req, res, next) {
+  req.db = db;
+  next();
+});
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
