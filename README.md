@@ -2,7 +2,7 @@
 
 Для установки, выполните в консоли следующие команды:
 
-- **mkdir geodata-layers-api
+- **mkdir geodata-layers-api**
 - **cd geodata-layers-api**
 - **git clone https://github.com/Hennos/geodata-layers-api.git master**
 - **npm install**
