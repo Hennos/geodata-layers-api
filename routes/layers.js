@@ -6,8 +6,10 @@ router.get("/", function(req, res, next) {
   res.send("Получить список существующих слоёв");
 });
 
-router.get("/configs", function(req, res, next) {
-  res.send("Получить конфигурацию слоя по его идентификатору");
+router.get("/configs/:id", function(req, res, next) {
+  const layerId = req.params.id;
+
+  res.send("Получить конфигурацию слоя c id = " + layerId);
 });
 
 router.put("/configs", function(req, res, next) {
