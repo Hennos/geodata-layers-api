@@ -3,19 +3,19 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  res.render("Получить список существующих слоёв");
+  res.send("Получить список существующих слоёв");
 });
 
 router.get("/configs", function(req, res, next) {
-  res.render("Получить конфигурацию слоя по его идентификатору");
+  res.send("Получить конфигурацию слоя по его идентификатору");
 });
 
 router.put("/configs", function(req, res, next) {
-  res.render("Создать конфигурацию нового слоя");
+  res.send("Создать конфигурацию нового слоя");
 });
 
 router.post("/configs", function(req, res, next) {
-  res.render("Обновить конфигурацию существующего слоя");
+  res.send("Обновить конфигурацию существующего слоя");
 });
 
 module.exports = router;
