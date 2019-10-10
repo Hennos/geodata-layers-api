@@ -3,21 +3,38 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  res.send("Получить список существующих слоёв");
+  res.json(req.db.getLayers());
 });
 
 router.get("/configs/:id", function(req, res, next) {
-  const layerId = req.params.id;
-
-  res.send("Получить конфигурацию слоя c id = " + layerId);
+  const id = req.params.id;
+  const config = req.db.getLayerConfig(id);
+  if (config) {
+    res.json(config);
+  } else {
+    res.send(404);
+  }
 });
 
 router.put("/configs", function(req, res, next) {
-  res.send("Создать конфигурацию нового слоя");
+  const layer = req.body;
+  const result = req.db.createLayer(layer);
+  if (result) {
+    res.send(200);
+  } else {
+    res.send(400);
+  }
 });
 
-router.post("/configs", function(req, res, next) {
-  res.send("Обновить конфигурацию существующего слоя");
+router.post("/configs/:id", function(req, res, next) {
+  const id = req.params.id;
+  const layer = req.body;
+  const result = req.db.updateLayer(id, layer);
+  if (result) {
+    res.send(200);
+  } else {
+    res.send(400);
+  }
 });
 
 module.exports = router;
