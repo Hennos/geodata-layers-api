@@ -7,7 +7,7 @@ router.get("/", function(req, res, next) {
 });
 
 router.get("/configs/:id", function(req, res, next) {
-  const id = req.params.id;
+  const { id } = req.params;
   const config = req.db.getLayerConfig(id);
   if (config) {
     res.json(config);
@@ -27,7 +27,7 @@ router.post("/configs", function(req, res, next) {
 });
 
 router.put("/configs/:id", function(req, res, next) {
-  const id = req.params.id;
+  const { id } = req.params;
   const layer = req.body;
   const result = req.db.updateLayer(id, layer);
   if (result) {
